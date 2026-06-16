@@ -1,22 +1,32 @@
-package feedback.entity;
+package feedback.controller;
 
-import jakarta.persistence.*;
-import lombok.Data;
+import feedback.entity.Feedback;
+import feedback.repository.FeedbackRepository;
+import org.springframework.web.bind.annotation.*;
 
-@Entity
-@Table(name="feedback_entries")
-@Data
-public class Feedback {
+import java.util.List;
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
+@RestController
+@RequestMapping("/api")
+public class FeedbackController {
 
-    private String patientName;
-    private Integer age;
-    private String visitType;
-    private String department;
-    private String serviceName;
-    private Integer rating;
-    private String comments;
+    private final FeedbackRepository repository;
+
+    public FeedbackController(
+            FeedbackRepository repository) {
+        this.repository = repository;
+    }
+
+    @PostMapping("/feedback")
+    public Feedback save(
+            @RequestBody Feedback feedback) {
+
+        return repository.save(feedback);
+    }
+
+    @GetMapping("/dashboard")
+    public List<Feedback> dashboard() {
+
+        return repository.findAll();
+    }
 }
