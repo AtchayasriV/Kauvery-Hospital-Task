@@ -27,10 +27,12 @@ pipeline {
 
         stage('Build Maven Package') {
             steps {
-                sh '''
-                echo "Building Spring Boot application..."
-                mvn clean package -DskipTests
-                '''
+                dir('Kau-feedback') {
+                    sh '''
+                    echo "Building Spring Boot application..."
+                    mvn clean package -DskipTests
+                    '''
+                }
             }
         }
 
