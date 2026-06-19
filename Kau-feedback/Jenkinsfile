@@ -25,6 +25,15 @@ pipeline {
             }
         }
 
+        stage('Build Maven Package') {
+            steps {
+                sh '''
+                echo "Building Spring Boot application..."
+                mvn clean package -DskipTests
+                '''
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 sh '''
@@ -47,6 +56,7 @@ pipeline {
         stage('Tag Image') {
             steps {
                 sh '''
+                echo "Tagging image..."
                 docker tag $IMAGE_NAME:latest $ECR_URL:latest
                 '''
             }
@@ -55,6 +65,7 @@ pipeline {
         stage('Push Image to ECR') {
             steps {
                 sh '''
+                echo "Pushing image to ECR..."
                 docker push $ECR_URL:latest
                 '''
             }
@@ -63,6 +74,7 @@ pipeline {
         stage('Deploy to ECS') {
             steps {
                 sh '''
+                echo "Deploying to ECS..."
                 aws ecs update-service \
                 --cluster $CLUSTER_NAME \
                 --service $SERVICE_NAME \
