@@ -1,6 +1,12 @@
 pipeline {
     agent any
-
+    stages {
+        stage('Clean') {
+            steps {
+                deleteDir()
+            }
+        }
+    }
     environment {
         AWS_REGION = "ap-south-1"
         ACCOUNT_ID = "922931546897"
