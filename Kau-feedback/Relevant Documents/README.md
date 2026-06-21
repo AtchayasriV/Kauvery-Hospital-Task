@@ -80,10 +80,10 @@ Multi-stage Dockerfile
 
 Build Stage:
 - Maven 3.9.6
-- Java 17
+- Java 21
 
 Runtime Stage:
-- Amazon Corretto 17
+- Amazon Corretto 21
 
 ---
 
@@ -107,7 +107,7 @@ Amazon ECS Fargate
 
 # Technologies
 
-- Java 17 and 21
+- Java 21
 - Spring Boot
 - MySQL
 - Docker
