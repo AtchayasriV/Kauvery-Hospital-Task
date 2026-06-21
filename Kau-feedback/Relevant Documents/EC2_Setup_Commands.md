@@ -36,7 +36,7 @@ git --version
 ## 5. Install Java 17
 
 ```bash
-sudo dnf install java-17-amazon-corretto -y
+sudo dnf install java-21-amazon-corretto -y
 java -version
 ```
 
@@ -71,7 +71,7 @@ groups
 
 - MariaDB Client
 - Git
-- Java 17 (Amazon Corretto)
+- Java 21 (Amazon Corretto)
 - Maven
 - Docker
 
