@@ -33,7 +33,7 @@ sudo dnf install git -y
 git --version
 ```
 
-## 5. Install Java 17
+## 5. Install Java 21
 
 ```bash
 sudo dnf install java-21-amazon-corretto -y
